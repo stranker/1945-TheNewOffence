@@ -59,6 +59,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Bullet.cs" />
+    <Compile Include="Assets\Script\EnemyAirplane.cs" />
     <Compile Include="Assets\Script\PlayerAirplane.cs" />
     <Reference Include="Unity.PackageManagerUI.Editor">
       <HintPath>C:/Users/Capo/Desktop/Danielito/FACU/1945-TheNewOffence/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
