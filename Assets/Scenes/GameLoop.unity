@@ -113,6 +113,47 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &165126401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 165126402}
+  - component: {fileID: 165126403}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &165126402
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 165126401}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.2493842, y: 0.90611696, z: -0.09029391}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &165126403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 165126401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b5fae2dca95b94fac4b3a619f32337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &204880701
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +191,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4872606639636612, guid: 6dd89ca8bb3687a42b8cb3a91e2f4755, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4872606639636612, guid: 6dd89ca8bb3687a42b8cb3a91e2f4755, type: 2}
       propertyPath: m_LocalPosition.y
@@ -178,7 +219,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4872606639636612, guid: 6dd89ca8bb3687a42b8cb3a91e2f4755, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4872606639636612, guid: 6dd89ca8bb3687a42b8cb3a91e2f4755, type: 2}
       propertyPath: m_LocalScale.x
@@ -281,7 +322,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1029605966
 GameObject:
@@ -358,7 +399,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!114 &1029605969
 MonoBehaviour:
@@ -371,6 +412,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4598fce83f59fea4c85af31d126d9275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: 0}
+  minDistance: 3
+  isChasing: 1
 --- !u!58 &1029605970
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -397,7 +441,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1.3684776
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
