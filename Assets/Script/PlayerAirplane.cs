@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerAirplane : MonoBehaviour
 {
     public int speed = 6;
-    public float xMin, xMax, yMin, yMax;
     public GameObject bulletPrefab;
     public float shootingTime;
     public bool canShoot = true;
@@ -24,7 +23,16 @@ public class PlayerAirplane : MonoBehaviour
     {
         Movement();
         Shoot();
+        BombDrop();
         CheckCanShoot();
+    }
+
+    private void BombDrop()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+        }
     }
 
     private void CheckCanShoot()
@@ -40,7 +48,7 @@ public class PlayerAirplane : MonoBehaviour
 
     private void Shoot()
     {
-        if (Input.GetKey(KeyCode.Space) && canShoot)
+        if (Input.GetKey(KeyCode.S) && canShoot)
         {
             canShoot = false;
             GameObject b = Instantiate(bulletPrefab, firstCanon.transform.position, transform.rotation, transform.parent);
@@ -50,11 +58,15 @@ public class PlayerAirplane : MonoBehaviour
 
     private void Movement()
     {
+        float heightCamera = 2f * Camera.main.orthographicSize;
+        float widthCamera = heightCamera * Camera.main.aspect;
+        float halfSizeSpriteW = GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        float halfSizeSpriteH = GetComponent<SpriteRenderer>().bounds.size.y / 2;
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
         Vector3 newPos = transform.position + movement * speed * Time.deltaTime;
-        newPos.x = Mathf.Clamp(newPos.x, xMin, xMax);
-        newPos.y = Mathf.Clamp(newPos.y, yMin, yMax);
+        newPos.x = Mathf.Clamp(newPos.x, -widthCamera / 2 + halfSizeSpriteW, widthCamera / 2 - halfSizeSpriteW);
+        newPos.y = Mathf.Clamp(newPos.y, -heightCamera / 2 + halfSizeSpriteH, heightCamera / 2 - halfSizeSpriteH);
         transform.position = newPos;
     }
 }
