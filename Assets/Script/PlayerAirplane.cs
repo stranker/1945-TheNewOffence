@@ -7,15 +7,15 @@ public class PlayerAirplane : MonoBehaviour
 {
     public int speed = 6;
     public GameObject bulletPrefab;
+    public GameObject bombPrefab;
     public float shootingTime;
     public bool canShoot = true;
-    private const float resetShootTime = 0.1f;
+    private const float resetShootTime = 0.2f;
     private Vector3 movement = Vector3.zero;
-    private GameObject firstCanon;
+    public List<GameObject> cannons = new List<GameObject>();
     // Use this for initialization
     void Start()
     {
-        firstCanon = GameObject.Find("FirstCanon");
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class PlayerAirplane : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
+            Instantiate(bombPrefab, transform.position, transform.rotation, transform.parent);
         }
     }
 
@@ -51,8 +51,11 @@ public class PlayerAirplane : MonoBehaviour
         if (Input.GetKey(KeyCode.S) && canShoot)
         {
             canShoot = false;
-            GameObject b = Instantiate(bulletPrefab, firstCanon.transform.position, transform.rotation, transform.parent);
-            b.GetComponent<Bullet>().SetDirectionY(1);
+            for (int i = 0; i < cannons.Count; i++)
+            {
+                GameObject b = Instantiate(bulletPrefab, cannons[i].transform.position, transform.rotation, transform.parent);
+                b.GetComponent<Bullet>().SetDirectionY(1);
+            }
         }
     }
 

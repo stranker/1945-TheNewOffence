@@ -23,7 +23,11 @@ public class EnemyAirplane : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        if (collision.tag == "Bullet")
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
     }
 
     private void Movement()

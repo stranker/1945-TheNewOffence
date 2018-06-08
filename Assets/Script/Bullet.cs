@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    public const int speed = 6;
+    public const int speed = 10;
     public int dirY;
 	// Update is called once per frame
 	void Update () {
