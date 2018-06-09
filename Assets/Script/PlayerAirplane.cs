@@ -13,9 +13,12 @@ public class PlayerAirplane : MonoBehaviour
     private const float resetShootTime = 0.2f;
     private Vector3 movement = Vector3.zero;
     public List<GameObject> cannons = new List<GameObject>();
-    // Use this for initialization
-    void Start()
+    public int energy;
+    public const int MAX_ENERGY = 10;
+
+    private void Start()
     {
+        energy = MAX_ENERGY;
     }
 
     // Update is called once per frame
@@ -48,7 +51,7 @@ public class PlayerAirplane : MonoBehaviour
 
     private void Shoot()
     {
-        if (Input.GetKey(KeyCode.S) && canShoot)
+        if (Input.GetKey(KeyCode.F) && canShoot)
         {
             canShoot = false;
             for (int i = 0; i < cannons.Count; i++)
@@ -71,5 +74,14 @@ public class PlayerAirplane : MonoBehaviour
         newPos.x = Mathf.Clamp(newPos.x, -widthCamera / 2 + halfSizeSpriteW, widthCamera / 2 - halfSizeSpriteW);
         newPos.y = Mathf.Clamp(newPos.y, -heightCamera / 2 + halfSizeSpriteH, heightCamera / 2 - halfSizeSpriteH);
         transform.position = newPos;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Enemy")
+        {
+            Destroy(collision.gameObject);
+            energy--;
+        }
     }
 }
