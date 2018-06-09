@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e92afe7a759b0140a672da476e39d38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 1333484765235482, guid: 73e459e65eb907e42ace43ce1f1f94be,
+    type: 2}
 --- !u!212 &212080935265614814
 SpriteRenderer:
   m_ObjectHideFlags: 1
