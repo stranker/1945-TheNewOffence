@@ -7,11 +7,18 @@ public class Bullet : MonoBehaviour {
 
     public const int speed = 10;
     public int dirY;
+    public int power = 1;
 	// Update is called once per frame
 	void Update () {
         Movement();
         CheckBoundaries();
+        CheckPower();
 	}
+
+    private void CheckPower()
+    {
+        transform.localScale = new Vector3(1,1,1) * power;
+    }
 
     private void CheckBoundaries()
     {
@@ -30,5 +37,15 @@ public class Bullet : MonoBehaviour {
     public void SetDirectionY(int val)
     {
         dirY = val;
+    }
+
+    public int GetPower()
+    {
+        return power;
+    }
+
+    public void SetPower(int val)
+    {
+        power = val;
     }
 }

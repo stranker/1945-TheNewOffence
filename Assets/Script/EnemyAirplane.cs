@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class EnemyAirplane : MonoBehaviour
 {
-    const int speed = 4;
+    public int speed = 4;
     public Vector3 direction;
     public int minDistance = 3;
-    private GameObject player;
     public bool isChasing = true;
+    public int score = 200;
+    private GameObject player;
+
     // Use this for initialization
     void Start()
     {
@@ -27,6 +29,12 @@ public class EnemyAirplane : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
+            GetComponent<DropItems>().DropItem(transform.position);
+        }
+        else if (collision.tag == "Explosion")
+        {
+            Destroy(gameObject);
+            GetComponent<DropItems>().DropItem(transform.position);
         }
     }
 
@@ -34,11 +42,15 @@ public class EnemyAirplane : MonoBehaviour
     {
         Vector3 movement = Vector3.zero;
         float distanceToPlayer = Mathf.Abs(player.transform.position.y - transform.position.y);
-        if (distanceToPlayer > minDistance && isChasing)
+        if (distanceToPlayer > minDistance)
             direction = (player.transform.position - transform.position).normalized;
-        else
-            isChasing = false;
         movement = direction * speed * Time.deltaTime;
         transform.position += movement;
     }
+
+    private void OnDestroy()
+    {
+        GameManager.Get().SetScore(GameManager.Get().GetScore() + score);
+    }
+
 }

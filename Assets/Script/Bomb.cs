@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bomb : MonoBehaviour {
-    private Vector3 direction;
-    const float minDistanceToScreenCenter = 0.1f;
     public GameObject explosionPrefab;
+    private const float minDistanceToScreenCenter = 0.1f;
+    private Vector3 direction;
+
     // Use this for initialization
     void Start () {
         direction = -transform.position.normalized;

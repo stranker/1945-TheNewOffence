@@ -3,48 +3,92 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGroupSpaceship : MonoBehaviour {
-
-    public List<GameObject> myGroup;
+public class EnemyGroupSpaceship : MonoBehaviour
+{
     public Vector3 direction;
     public const int speed = 100;
+    public int changeDirectionTime = 3;
+    public float timer;
+    public bool leader = false;
+    public int id;
+    public float minDistance = 0.5f;
+    public int score = 100;
 
-    // Use this for initialization
-    void Start () {
-        NewDirection();
+    // Update is called once per frame
+    void Update()
+    {
+        if (leader)
+        {
+            timer += Time.deltaTime;
+            if (timer > changeDirectionTime)
+            {
+                NewDirection();
+                timer = 0;
+            }
+            MoveTo(direction);
+        }
+        else
+        {
+            if (transform.parent.GetComponent<EnemyGroup>().GetNextShip(id) != null)
+            {
+                Vector3 vectorDirection = transform.parent.GetComponent<EnemyGroup>().GetNextShip(id).transform.position - transform.position;
+                direction = vectorDirection.normalized;
+                if (vectorDirection.magnitude > minDistance)
+                    MoveTo(direction);
+            }
+            else
+                leader = true;
+        }
+    }
+
+    private void MoveTo(Vector3 dir)
+    {
+        GetComponent<Rigidbody2D>().velocity = dir * speed * Time.deltaTime;
+        if (direction != Vector3.zero)
+        {
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
     }
 
     private void NewDirection()
     {
         if (transform.position.x < 0)
-            direction.x = UnityEngine.Random.Range(0.0f, 20);
+            direction.x = UnityEngine.Random.Range(0f, 1f);
         else
-            direction.x = UnityEngine.Random.Range(-20, 0.0f);
-        direction.y -= 5;
+            direction.x = UnityEngine.Random.Range(-1f, 0f);
+        direction.y -= 0.5f;
         direction = direction.normalized;
     }
 
-    // Update is called once per frame
-    void Update () {
-        /*if (myGroup[0].gameObject == this.gameObject)
-        {
-            
-        }*/
-        MoveTo(direction);
+    public Vector3 GetDirection()
+    {
+        return direction;
     }
 
-    private void MoveTo(Vector3 dir)
+    public void SetLeader(bool val)
     {
-        GetComponent<Rigidbody2D>().velocity = direction * speed * Time.deltaTime;
-        if (direction != Vector3.zero)
+        leader = val;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Bullet")
         {
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+            GetComponent<DropItems>().DropItem(transform.position);
+        }
+        else if (collision.tag == "Explosion")
+        {
+            Destroy(gameObject);
+            GetComponent<DropItems>().DropItem(transform.position);
         }
     }
 
-    public void SetGroup(List<GameObject> group)
+    private void OnDestroy()
     {
-        myGroup = group;
+        GameManager.Get().SetScore(GameManager.Get().GetScore() + score);
     }
+
 }

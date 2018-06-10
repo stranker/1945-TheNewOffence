@@ -15,6 +15,8 @@ public class PlayerAirplane : MonoBehaviour
     public List<GameObject> cannons = new List<GameObject>();
     public int energy;
     public const int MAX_ENERGY = 10;
+    public int bulletPower = 1;
+    public int bombs = 1;
 
     private void Start()
     {
@@ -32,9 +34,10 @@ public class PlayerAirplane : MonoBehaviour
 
     private void BombDrop()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && bombs > 0)
         {
             Instantiate(bombPrefab, transform.position, transform.rotation, transform.parent);
+            bombs--;
         }
     }
 
@@ -58,6 +61,7 @@ public class PlayerAirplane : MonoBehaviour
             {
                 GameObject b = Instantiate(bulletPrefab, cannons[i].transform.position, transform.rotation, transform.parent);
                 b.GetComponent<Bullet>().SetDirectionY(1);
+                b.GetComponent<Bullet>().power = bulletPower;
             }
         }
     }
@@ -84,4 +88,15 @@ public class PlayerAirplane : MonoBehaviour
             energy--;
         }
     }
+
+    public void AddBulletPower()
+    {
+        bulletPower++;
+    }
+
+    public int GetBombs()
+    {
+        return bombs;
+    }
+
 }
