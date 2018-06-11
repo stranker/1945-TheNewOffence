@@ -20,10 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4442335419196132}
   - component: {fileID: 212742536151026048}
-  - component: {fileID: 114069442614556394}
   - component: {fileID: 58448135328573550}
   - component: {fileID: 50496739617870684}
+  - component: {fileID: 114069442614556394}
   - component: {fileID: 114882428830029034}
+  - component: {fileID: 114494929532235778}
   m_Layer: 0
   m_Name: EnemyAirplane
   m_TagString: Enemy
@@ -95,6 +96,22 @@ MonoBehaviour:
   minDistance: 3
   isChasing: 1
   score: 200
+--- !u!114 &114494929532235778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1254179320107642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575b5e7043ccbf24d83dab9ce1d37bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 1333484765235482, guid: 73e459e65eb907e42ace43ce1f1f94be,
+    type: 2}
+  explosion: {fileID: 0}
+  shakeAmount: 0
+  shakeDuration: 0
 --- !u!114 &114882428830029034
 MonoBehaviour:
   m_ObjectHideFlags: 1
