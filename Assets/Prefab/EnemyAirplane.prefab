@@ -38,13 +38,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1254179320107642}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3.57, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50496739617870684
 Rigidbody2D:
   serializedVersion: 4
@@ -109,9 +109,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 1333484765235482, guid: 73e459e65eb907e42ace43ce1f1f94be,
     type: 2}
-  explosion: {fileID: 0}
-  shakeAmount: 0
-  shakeDuration: 0
 --- !u!114 &114882428830029034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,7 +137,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -162,7 +158,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c872803ed9930b64bb0692c5718fbf90, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 310d14e7b03420e41a36ce0b8634202a, type: 3}
   m_Color: {r: 1, g: 0.33849773, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0

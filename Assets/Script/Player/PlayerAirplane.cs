@@ -12,7 +12,8 @@ public class PlayerAirplane : MonoBehaviour
     public bool canShoot = true;
     private const float resetShootTime = 0.2f;
     private Vector3 movement = Vector3.zero;
-    public List<GameObject> cannons = new List<GameObject>();
+    public List<GameObject> cannons;
+    public int activeCannons = 1;
     public int energy;
     public const int MAX_ENERGY = 10;
     public int bulletPower = 1;
@@ -74,10 +75,13 @@ public class PlayerAirplane : MonoBehaviour
         if (Input.GetKey(KeyCode.F) && canShoot)
         {
             canShoot = false;
-            for (int i = 0; i < cannons.Count; i++)
+            foreach (GameObject cannon in cannons)
             {
-                GameObject b = Instantiate(bulletPrefab, cannons[i].transform.position, transform.rotation, transform.parent);
-                b.GetComponent<Bullet>().Initialize(1, bulletPower, bulletDispersion);
+                if (cannon.activeInHierarchy)
+                {
+                    GameObject b = Instantiate(bulletPrefab, cannon.transform.position, transform.rotation, transform.parent);
+                    b.GetComponent<Bullet>().Initialize(1, bulletPower, bulletDispersion);
+                }
             }
         }
     }
@@ -141,6 +145,13 @@ public class PlayerAirplane : MonoBehaviour
     public int GetMaxEnergy()
     {
         return MAX_ENERGY;
+    }
+
+    public void AddCannons()
+    {
+        activeCannons += 2;
+        for (int i = 0; i < activeCannons; i++)
+            cannons[i].SetActive(true);
     }
 
 }
