@@ -10,6 +10,7 @@ public class ItemPowerBullet : Collectable {
         {
             PlayerAirplane player = collision.GetComponent<PlayerAirplane>();
             player.SetBulletPower(player.GetBulletPower() + 1);
+            GameManager.Get().itemsCollected++;
             Destroy(gameObject);
         }
     }

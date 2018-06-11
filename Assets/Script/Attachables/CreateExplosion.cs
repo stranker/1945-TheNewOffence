@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CreateExplosion : MonoBehaviour {
     public GameObject explosionPrefab;
-    public GameObject explosion;
-    public float shakeAmount;
-    public float shakeDuration;
+    private GameObject explosion;
+    private float shakeAmount;
+    private float shakeDuration;
 
     public void Create(Vector3 pos, float duration, int speed, float _shakeDuration, float _shakeAmount)
     {

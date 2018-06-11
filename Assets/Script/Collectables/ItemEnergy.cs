@@ -9,6 +9,7 @@ public class ItemEnergy : Collectable {
         if (collision.tag == "Player")
         {
             PlayerAirplane player = collision.GetComponent<PlayerAirplane>();
+            GameManager.Get().itemsCollected++;
             player.SetEnergy(player.GetEnergy() + 1);
             Destroy(gameObject);
         }

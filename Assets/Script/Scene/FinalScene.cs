@@ -13,9 +13,11 @@ public class FinalScene : MonoBehaviour {
     // Use this for initialization
     void Start () {
         scoreText.text = GameManager.Get().totalScore.ToString();
-        enemiesText.text = "Enemies killed " + GameManager.Get().totalEnemiesKilled.ToString();
+        enemiesText.text = "Enemies destroyed " + GameManager.Get().totalEnemiesKilled.ToString();
         shootsText.text = "Shoots fired " + GameManager.Get().totalShootsFired.ToString();
-        float accuracy = (GameManager.Get().totalEnemiesKilled * 100 / GameManager.Get().totalShootsFired) ;
+        float accuracy = 0;
+        if (GameManager.Get().totalShootsFired >= 0)
+            accuracy = (GameManager.Get().totalEnemiesKilled * 100 / GameManager.Get().totalShootsFired);
         accuracyText.text = "Accuracy " + accuracy.ToString() + "%";
     }
 }

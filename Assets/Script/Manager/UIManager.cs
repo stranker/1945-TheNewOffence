@@ -12,25 +12,25 @@ public class UIManager : MonoBehaviour {
     public int bombs;
     // Use this for initialization
     void Start () {
-        score = GameManager.Get().totalScore;
+        score = GameManager.Get().levelScore;
         bombs = GameManager.Get().player.GetComponent<PlayerAirplane>().GetBombs();
         energy = GameManager.Get().player.GetComponent<PlayerAirplane>().GetEnergy();
         scoreText.text = "SCORE " + score.ToString();
-        bombsText.text = "BOMBS " + bombs.ToString();
+        bombsText.text = bombs.ToString();
         energyBar.fillAmount = energy / GameManager.Get().player.GetComponent<PlayerAirplane>().GetMaxEnergy();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (score != GameManager.Get().totalScore)
+        if (score != GameManager.Get().levelScore)
         {
-            score = GameManager.Get().totalScore;
+            score = GameManager.Get().levelScore;
             scoreText.text = "SCORE " + score.ToString();
         }
         if (bombs != GameManager.Get().player.GetComponent<PlayerAirplane>().GetBombs())
         {
             bombs = GameManager.Get().player.GetComponent<PlayerAirplane>().GetBombs();
-            bombsText.text = "BOMBS " + bombs.ToString();
+            bombsText.text = bombs.ToString();
         }
         if (energy != GameManager.Get().player.GetComponent<PlayerAirplane>().GetEnergy())
         {

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,6 @@ public class PlayerAirplane : MonoBehaviour
     public int speed = 6;
     public GameObject bulletPrefab;
     public GameObject bombPrefab;
-    public GameObject explosionPrefab;
     public float shootingTime;
     public bool canShoot = true;
     private const float resetShootTime = 0.2f;
@@ -19,6 +19,9 @@ public class PlayerAirplane : MonoBehaviour
     public int bombs = 1;
     private const int clampY = 1;
     public const float bulletDispersion = 1f;
+    public bool canBeHit = true;
+    public int flickTime = 3;
+    public float timer;
 
     private void Start()
     {
@@ -32,6 +35,18 @@ public class PlayerAirplane : MonoBehaviour
         Shoot();
         BombDrop();
         CheckCanShoot();
+        CheckHit();
+    }
+
+    private void CheckHit()
+    {
+        if (!canBeHit)
+            timer = Time.deltaTime;
+        if (timer >= flickTime)
+        {
+            timer = 0;
+            canBeHit = true;
+        }
     }
 
     private void BombDrop()
@@ -85,6 +100,7 @@ public class PlayerAirplane : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
+            canBeHit = false;
             Destroy(collision.gameObject);
             energy--;
         }
