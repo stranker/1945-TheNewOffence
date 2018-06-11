@@ -27,14 +27,13 @@ public class EnemyAirplane : MonoBehaviour
     {
         if (collision.tag == "Bullet")
         {
-            Destroy(gameObject);
             Destroy(collision.gameObject);
-            GetComponent<DropItems>().DropItem(transform.position);
+            OnKill();
         }
         else if (collision.tag == "Explosion")
         {
             Destroy(gameObject);
-            GetComponent<DropItems>().DropItem(transform.position);
+            OnKill();
         }
     }
 
@@ -48,9 +47,13 @@ public class EnemyAirplane : MonoBehaviour
         transform.position += movement;
     }
 
-    private void OnDestroy()
+    public void OnKill()
     {
-        GameManager.Get().SetScore(GameManager.Get().GetScore() + score);
+        Destroy(gameObject);
+        GetComponent<DropItems>().DropItem(transform.position);
+        GetComponent<CreateExplosion>().Create(transform.position, 1, 10, 0.2f, 0.1f);
+        GameManager.Get().levelScore += score;
+        GameManager.Get().levelEnemiesKilled++;
     }
 
 }

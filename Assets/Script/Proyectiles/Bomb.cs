@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bomb : MonoBehaviour {
-    public GameObject explosionPrefab;
+
     private const float minDistanceToScreenCenter = 0.1f;
     private Vector3 direction;
 
@@ -17,8 +17,7 @@ public class Bomb : MonoBehaviour {
         transform.position += direction * 4 * Time.deltaTime;
         if (transform.position.y < minDistanceToScreenCenter && transform.position.y > -minDistanceToScreenCenter)
         {
-            GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation, transform.parent);
-            explosion.GetComponent<Explosion>().SetEndTime(2);
+            GetComponent<CreateExplosion>().Create(transform.position, 1, 75, 1f, 0.5f);
             Destroy(gameObject);
         }
 	}

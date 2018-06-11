@@ -1,15 +1,20 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    public const int speed = 10;
-    public int dirY;
-    public int power = 1;
-	// Update is called once per frame
-	void Update () {
+    private const int speed = 10;
+    private int dirY;
+    private int power = 1;
+    private float dispersion;
+
+    private void Start()
+    {
+        GameManager.Get().totalShootsFired++;
+    }
+
+    void Update () {
         Movement();
         CheckBoundaries();
         CheckPower();
@@ -31,7 +36,15 @@ public class Bullet : MonoBehaviour {
     {
         Vector3 movement = Vector3.zero;
         movement.y = dirY * speed;
+        movement.x = dispersion;
         transform.position += movement * Time.deltaTime;
+    }
+
+    public void Initialize(int _dir, int _power, float _disp)
+    {
+        dirY = _dir;
+        power = _power;
+        dispersion = Random.Range(-_disp,_disp);
     }
 
     public void SetDirectionY(int val)

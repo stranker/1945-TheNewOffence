@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemEnergy : MonoBehaviour {
-
-    public const int quantity = 1;
+public class ItemPowerBullet : Collectable {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerAirplane>().energy++;
+            PlayerAirplane player = collision.GetComponent<PlayerAirplane>();
+            player.SetBulletPower(player.GetBulletPower() + 1);
             Destroy(gameObject);
         }
     }
-
 }
