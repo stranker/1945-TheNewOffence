@@ -59,19 +59,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\Bomb.cs" />
-    <Compile Include="Assets\Script\Bullet.cs" />
-    <Compile Include="Assets\Script\DropItems.cs" />
-    <Compile Include="Assets\Script\EnemyAirplane.cs" />
-    <Compile Include="Assets\Script\EnemyGroup.cs" />
-    <Compile Include="Assets\Script\EnemyGroupSpaceship.cs" />
-    <Compile Include="Assets\Script\EnemySpawner.cs" />
-    <Compile Include="Assets\Script\Explosion.cs" />
-    <Compile Include="Assets\Script\GameManager.cs" />
-    <Compile Include="Assets\Script\ItemEnergy.cs" />
-    <Compile Include="Assets\Script\ItemPowerBullet.cs" />
-    <Compile Include="Assets\Script\PlayerAirplane.cs" />
-    <Compile Include="Assets\Script\UIManager.cs" />
+    <Compile Include="Assets\Script\Attachables\CameraShake.cs" />
+    <Compile Include="Assets\Script\Attachables\CreateExplosion.cs" />
+    <Compile Include="Assets\Script\Attachables\DropItems.cs" />
+    <Compile Include="Assets\Script\Collectables\Collectable.cs" />
+    <Compile Include="Assets\Script\Collectables\ItemEnergy.cs" />
+    <Compile Include="Assets\Script\Collectables\ItemPowerBullet.cs" />
+    <Compile Include="Assets\Script\Enemies\EnemyAirplane.cs" />
+    <Compile Include="Assets\Script\Enemies\EnemyGroup.cs" />
+    <Compile Include="Assets\Script\Enemies\EnemyGroupSpaceship.cs" />
+    <Compile Include="Assets\Script\Enemies\EnemySpawner.cs" />
+    <Compile Include="Assets\Script\Manager\Background.cs" />
+    <Compile Include="Assets\Script\Manager\GameManager.cs" />
+    <Compile Include="Assets\Script\Manager\LevelManager.cs" />
+    <Compile Include="Assets\Script\Manager\TransitionManager.cs" />
+    <Compile Include="Assets\Script\Manager\UIManager.cs" />
+    <Compile Include="Assets\Script\Player\PlayerAirplane.cs" />
+    <Compile Include="Assets\Script\Proyectiles\Bomb.cs" />
+    <Compile Include="Assets\Script\Proyectiles\Bullet.cs" />
+    <Compile Include="Assets\Script\Proyectiles\Explosion.cs" />
+    <Compile Include="Assets\Script\Scene\FinalScene.cs" />
+    <Compile Include="Assets\Script\Scene\MainMenu.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Capo/Desktop/Danielito/FACU/1945-TheNewOffence/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
