@@ -108,8 +108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdb88bc4a80b6448b7a2f9b230c0447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
-  dropProb: 7
+  items:
+  - {fileID: 1124732274685608, guid: f55175993a3de424f857c2289c5cccbc, type: 2}
+  - {fileID: 1137987601254904, guid: 07d31e183e3aa5644860777e27c37456, type: 2}
+  dropProb: 8
 --- !u!212 &212768500315901902
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -123,6 +125,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
