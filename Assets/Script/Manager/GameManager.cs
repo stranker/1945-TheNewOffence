@@ -1,24 +1,26 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+    public GameObject player;
+    public GameObject levelManager;
+    public GameObject listOfEnemies;
     public int levelScore = 0;
     public int totalScore = 0;
     public int totalEnemiesKilled = 0;
     public int levelEnemiesKilled = 0;
     public int totalShootsFired = 0;
     public int itemsCollected = 0;
-    public GameObject player;
-    public GameObject levelManager;
-    public bool isPaying = true;
     public int currentScene = 0;
     public int currentLevel = 0;
-    public GameObject listOfEnemies;
-    public float timer;
     public int nextSceneTime = 4;
+    public float timer;
     public bool canChangeScene = true;
+    public bool isPaying = true;
+    private bool gameOver = false;
 
     void Awake()
     {
@@ -32,6 +34,18 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         CheckLevelCompleted();
+        CheckGameover();
+    }
+
+    private void CheckGameover()
+    {
+        if (player != null && player.GetComponent<PlayerAirplane>().GetEnergy() <= 0)
+            gameOver = true;
+        if (gameOver && canChangeScene)
+        {
+            canChangeScene = false;
+            SceneManager.LoadScene("FinalScene");
+        }
     }
 
     private void CheckLevelCompleted()

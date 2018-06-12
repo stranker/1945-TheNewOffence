@@ -150,8 +150,9 @@ public class PlayerAirplane : MonoBehaviour
     public void AddCannons()
     {
         activeCannons += 2;
+        if (activeCannons > cannons.Count)
+            activeCannons = cannons.Count;
         for (int i = 0; i < activeCannons; i++)
             cannons[i].SetActive(true);
     }
-
 }
