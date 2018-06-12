@@ -64,6 +64,7 @@
     <Compile Include="Assets\Script\Attachables\DropItems.cs" />
     <Compile Include="Assets\Script\Collectables\Collectable.cs" />
     <Compile Include="Assets\Script\Collectables\ItemEnergy.cs" />
+    <Compile Include="Assets\Script\Collectables\ItemMoreShoots.cs" />
     <Compile Include="Assets\Script\Collectables\ItemPowerBullet.cs" />
     <Compile Include="Assets\Script\Enemies\EnemyAirplane.cs" />
     <Compile Include="Assets\Script\Enemies\EnemyGroup.cs" />
