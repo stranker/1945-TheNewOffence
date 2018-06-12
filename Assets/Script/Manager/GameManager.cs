@@ -41,6 +41,10 @@ public class GameManager : MonoBehaviour
     {
         if (player != null && player.GetComponent<PlayerAirplane>().GetEnergy() <= 0)
             gameOver = true;
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
         if (gameOver && canChangeScene)
         {
             canChangeScene = false;
